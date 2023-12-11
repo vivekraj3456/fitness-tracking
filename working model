@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Tracking Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffb2b2; /* Light red background color */
+        }
+
+        .login-container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 300px;
+            text-align: center;
+            margin: 50px auto; /* Center the login container */
+        }
+
+        .login-header {
+            background-color: #3498db;
+            color: #fff;
+            padding: 20px;
+        }
+
+        .login-form {
+            padding: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .form-group button {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .form-group button:hover {
+            background-color: #2980b9;
+        }
+
+        header {
+            background-color: #3498db;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .main-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2, h3 {
+            color: #333;
+        }
+
+        p {
+            color: #555;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            text-align: center;
+            text-decoration: none;
+            background-color: #241e8e;
+            color: #fff;
+            border-radius: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #2980b9;
+        }
+
+        .feature {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .feature img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .nutrition-tracking {
+            margin-top: 40px;
+        }
+
+        .nutrition-tracking img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 20px;
+        }
+
+        .feedback {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .feedback h2 {
+            color: #333;
+        }
+
+        .feedback-form {
+            margin-top: 20px;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .feedback-form label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .feedback-form textarea {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .feedback-form button {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .feedback-form button:hover {
+            background-color: #2980b9;
+        }
+
+        .faq {
+            margin-top: 40px;
+            border-radius: 10px;
+            border-color: #2980b9;
+        }
+
+        .faq h2 {
+            color: #28c44c;
+    
+        
+        }
+
+        .faq h3 {
+            color: rgb(197, 36, 154);
+        }
+
+        .faq p {
+            color: #0f0e0e;
+        }
+
+        .calorie-meter {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .calorie-meter h2 {
+            color: #333;
+        }
+
+        .calorie-meter p {
+            color: #555;
+        }
+
+        .progress-bar-container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: #eee;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 20px;
+            background-color: #3498db;
+            width: 50%; /* Set the initial width based on the consumed calories */
+            transition: width 0.5s ease; /* Add a smooth transition effect */
+        }
+
+        .meet-trainer-button {
+            margin-top: 20px;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 0px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-container">
+    <div class="login-header">
+        <h2>Fitness Login</h2>
+    </div>
+    <div class="login-form">
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" placeholder="Enter your username">
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password">
+        </div>
+        <div class="form-group">
+            <button type="submit" onclick="login()">Login</button>
+        </div>
+        <div class="form-group">
+            <a href="signup.html">Don't have an account? Sign up here</a>
+        </div>
+    </div>
+</div>
+
+<header>
+    <h1>Fitness Tracker</h1>
+    <p>Your Personal Fitness Companion</p>
+</header>
+
+<div class="main-container">
+    <h2>Track Your Progress</h2>
+    <p>Stay motivated and achieve your fitness goals with our advanced tracking features.</p>
+    <a href="#" class="cta-button">Get Started</a>
+
+    <div class="feature">
+        <div>
+            <h3>Activity Tracking</h3>
+            <p>Record your daily activities and monitor your progress over time.</p>
+        </div>
+        <img src="activity-tracking.jpg" alt="Activity Tracking">
+    </div>
+
+    <div class="feature">
+        <div>
+            <h3>Nutrition Tracking</h3>
+            <p>Log your meals and keep track of your nutritional intake for a healthier lifestyle.</p>
+        </div>
+        <img src="nutrition-tracking.jpg" alt="Nutrition Tracking">
+    </div>
+
+    <div class="nutrition-tracking">
+        <h2>Nutrition Tracking</h2>
+        <p>Log your meals and keep track of your nutritional intake for a healthier lifestyle.</p>
+        <img src="nutrition-tracking.jpg" alt="Nutrition Tracking">
+    </div>
+
+    <div class="feedback">
+        <h2>Give Us Your Feedback</h2>
+        <div class="feedback-form">
+            <label for="user-feedback">Your Feedback:</label>
+            <textarea id="user-feedback" name="user-feedback" rows="4" placeholder="Enter your feedback"></textarea>
+            <button type="submit">Submit Feedback</button>
+        </div>
+    </div>
+
+    <div class="meet-your-trainer-button">
+        <a href="#" class="cta-button">Meet Your Personal Fitness Trainer</a>
+    </div>
+
+    <div class="faq">
+        <h2>Frequently Asked Questions</h2>
+        <div>
+            <h3>Q1: How do I track my activities?</h3>
+            <p>Tracking activities is easy! Go to the "Activity Tracking" section and click on the "Record Activity" button.</p>
+        </div>
+        <div>
+            <h3>Q2: Can I log my meals for the day?</h3>
+            <p>Absolutely! Visit the "Nutrition Tracking" page, and you can log all your meals and keep track of your nutritional intake.</p>
+        </div>
+        <div>
+            <h3>Q3: Is the feedback anonymous?</h3>
+            <p>Yes, your feedback is completely anonymous. We value your privacy.</p>
+        </div>
+        <div>
+            <h3>Q4: How can I join the fitness community?</h3>
+            <p>To join the fitness community, click on the "Join the Fitness Journey" link on the home page.</p>
+        </div>
+        <div>
+            <h3>Q5: Can I customize my fitness goals?</h3>
+            <p>Of course! In your profile settings, you can set and customize your fitness goals based on your preferences.</p>
+        </div>
+    </div>
+
+    <div class="calorie-meter">
+        <h2>Calorie Meter</h2>
+        <p>Your daily calorie consumption:</p>
+        <div class="progress-bar-container">
+            <div class="progress-bar" id="calorie-progress"></div>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    <p>&copy; 2023 Fitness Tracker. All rights reserved.</p>
+</footer>
+
+<script>
+    function login() {
+        // Add your login logic here
+        // For demonstration purposes, simply redirect to the home page
+        window.location.href = "home.html";
+    }
+
+    // Example: Set the initial consumed calories (you can replace it with your logic)
+    const initialCalories = ;
+    setCalorieProgress(initialCalories);
+
+    // Function to set the width of the progress bar based on consumed calories
+    function setCalorieProgress(consumedCalories) {
+        const progressBar = document.getElementById("calorie-progress");
+        const maxWidth = 3000; // Set the maximum calories you want to represent
+
+        // Calculate the width percentage based on consumed calories
+        const widthPercentage = (consumedCalories / maxWidth) * 100;
+
+        
+        progressBar.style.width = `${widthPercentage}%`;
+    }
+</script>
+
+</body>
+</html>
